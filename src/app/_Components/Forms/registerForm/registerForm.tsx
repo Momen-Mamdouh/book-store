@@ -96,8 +96,7 @@ export default function RegisterForm(){
 
                 // ^^Inset data into public.user table into supabse DB.
                 
-                const userId = data.user?.id;
-                console.log(data.user)
+                const userId = data.user?.id ?? '';
                 if (!userId) {
                     showDialog({
                         title: `Not Vaild User ID`,
