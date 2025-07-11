@@ -11,7 +11,7 @@ interface UserState {
 
   isAuthenticated:boolean,
   isLoading: boolean,
-  error: any | null,
+  error: unknown | null,
 }
 
 const initialState: UserState = {

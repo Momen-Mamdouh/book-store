@@ -30,8 +30,9 @@
             }
             
 
-          } catch (error:any) {
-            toast.error(error.message);
+          } catch (error:unknown) {
+              const errorMessage = error instanceof Error ? error.message : 'Unknown error at connecting with DataBase';
+              toast.error(errorMessage);
           }
     };
 

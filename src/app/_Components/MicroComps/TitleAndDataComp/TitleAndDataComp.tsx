@@ -1,8 +1,14 @@
 import Box from "@mui/material/Box";
+import { ReactNode } from "react";
 
+type TitleAndDataCompProps = {
+  dataTitle: string;
+  data: string | number | ReactNode | string[];
+  customDisplay?: string;
+  customWidth?: string;
+};
 
-
-export default function TitleAndDataComp(props:{dataTitle:string, data:any, customDisplay?:string, customWidth?:string}){
+export default function TitleAndDataComp(props:TitleAndDataCompProps){
 
 
         return(

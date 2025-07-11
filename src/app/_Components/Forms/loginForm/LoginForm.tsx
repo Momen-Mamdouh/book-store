@@ -23,6 +23,10 @@ import {  ILogin } from '@/app/_Interfaces/IForms';
 import Image from 'next/image';
 
 
+type MyFormValues = {
+    email: string;
+    password: string;
+};
 
 
 
@@ -105,7 +109,7 @@ export default function LoginForm(){
                                 user_id:user.id,
                             })
                             .eq('email', email);
-                            console.log("upadated")
+                          
                     }
 
                 showDialog({
@@ -193,14 +197,14 @@ export default function LoginForm(){
                     }}>
                         
 
-                <MuiMyFormTextField
+                <MuiMyFormTextField<MyFormValues>
                                 id="email"
                                 name="email"
                                 label="Email"
                                 formik={loginFormikObj}
                                 handleBlur={handleBlur}
-                                dismissedErrors={dismissedErrors}
-                                setDismissedErrors={setDismissedErrors}
+                                dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                                setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                             />
 
        

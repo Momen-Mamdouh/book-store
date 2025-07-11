@@ -38,10 +38,10 @@ export const finalizeOrderAndRefresh = async (user_id: string,
         toast.dismiss(toastId);
         toast.error(dataError);
     }
-  } catch (error:any) {
+  } catch (error:unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Unexpected error during ordering";
       setFetchingLoading(false); 
       toast.dismiss(toastId);
-      const errorMessage = error.message || "Unexpected error during ordering";
       toast.error(errorMessage);
       setFetchingResponse({responseStatus:500, error:errorMessage});
 

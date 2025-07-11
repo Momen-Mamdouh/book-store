@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/client';
 
 export async function syncAuthUserToDb(
   userId: string,
-  updateFields: Record<string, any>
+  updateFields: Record<string, unknown>
 ) {
   const supabase = createClient();
 

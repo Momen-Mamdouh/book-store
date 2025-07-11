@@ -37,8 +37,8 @@ export const clearWishListFromDatabase = createAsyncThunk<
         toast.success(`WishList cleared for user ${userData?.user?.identities?.[0]?.identity_data?.username} 👌`);
       return userId;
 
-    } catch (error:any) {
-        const errorMessage = error.message  || "Failed to clear the whishList";
+    } catch (error:unknown) {
+        const errorMessage = error instanceof Error ? error.message : "Failed to clear the wishlist";
         toast.dismiss(toastId);
         toast.error(errorMessage);
         return rejectWithValue(errorMessage);  

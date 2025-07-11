@@ -1,8 +1,17 @@
 
-  import { NextResponse } from 'next/server';
-  import Stripe from 'stripe';
+import { IBookData } from '@/app/_Interfaces/IAddedBookData';
+import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  type CartItemType = {
+      book_id:string,
+      bookOrder:IBookData,
+  }
+
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("Missing STRIPE_SECRET_KEY in environment variables.");
+  }
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2025-06-30.basil',
     typescript: true, 
     timeout: 20000, 
@@ -18,7 +27,7 @@
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         mode: 'payment',
-        line_items: cartItems.map((item: any) => ({
+        line_items: cartItems.map((item: CartItemType) => ({
           price_data: {
             currency: 'egp',
             product_data: {
@@ -35,7 +44,9 @@
 
       
       return NextResponse.json({ id: session.id});
-    } catch (err: any) {
-      return NextResponse.json({ error: err.message }, { status: 500 });
-    }
+    } catch (err: unknown) {
+        const errorMessage =
+          err instanceof Error ? err.message : 'Something went wrong';
+        return NextResponse.json({ error: errorMessage }, { status: 500 });
+}
   }

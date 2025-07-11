@@ -2,7 +2,20 @@
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
-export default function SwiperNavigationBtn(props:any){
+type BreakpointSizes = {
+  xs?: string | number;
+  sm?: string | number;
+  md?: string | number;
+  lg?: string | number;
+  xl?: string | number;
+};
+
+type SwiperNavigationBtnProps = {
+  btn: 'swiper-prev' | 'swiper-next';
+  btnSize: string | number | BreakpointSizes; 
+};
+
+export default function SwiperNavigationBtn(props:SwiperNavigationBtnProps){
 
 
     const btnClass = props.btn === 'swiper-prev' ? 'swiper-prev' : 'swiper-next'

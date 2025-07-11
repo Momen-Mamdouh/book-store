@@ -19,7 +19,13 @@ import ResponseDialog from '@/app/_Components/Loaders/responseDialog/responseDia
 import { IRegister } from '@/app/_Interfaces/IForms';
 
 
-
+type MyFormValues = {
+    name:string;
+    email: string;
+    phone:string;
+    password: string;
+    password_confirmation:string;
+};
 
 
 
@@ -86,7 +92,6 @@ export default function RegisterForm(){
                         buttonText: "Try Again",
                         route: "register"
                     });
-                    return;
                 }
 
                 // ^^Inset data into public.user table into supabse DB.
@@ -100,7 +105,6 @@ export default function RegisterForm(){
                         buttonText: "Try Again",
                         route: "register"
                     });
-                    return;
                 };
 
                 const { success, error: errorDB } = await syncAuthUserToDb(userId, {
@@ -117,7 +121,6 @@ export default function RegisterForm(){
                         buttonText: "Try Another",
                         route: "register"
                     });
-                    return;
                 }
 
                  showDialog({
@@ -158,34 +161,34 @@ export default function RegisterForm(){
                     rowGap:'1rem'
                     }}>
 
-                <MuiMyFormTextField
+                <MuiMyFormTextField<MyFormValues>
                     id="name"
                     name="name"
                     label="Name"
                     formik={registerFormikObj}
                     handleBlur={handleBlur}
-                    dismissedErrors={dismissedErrors}
-                    setDismissedErrors={setDismissedErrors}
+                    dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                    setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                 />
 
-                <MuiMyFormTextField
+                <MuiMyFormTextField<MyFormValues>
                     id="email"
                     name="email"
                     label="Email"
                     formik={registerFormikObj}
                     handleBlur={handleBlur}
-                    dismissedErrors={dismissedErrors}
-                    setDismissedErrors={setDismissedErrors}
+                    dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                    setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                 />
 
-                <MuiMyFormTextField
+                <MuiMyFormTextField<MyFormValues>
                     id="phone"
                     name="phone"
                     label="Phone"
                     formik={registerFormikObj}
                     handleBlur={handleBlur}
-                    dismissedErrors={dismissedErrors}
-                    setDismissedErrors={setDismissedErrors}
+                    dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                    setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                 />
                         
 

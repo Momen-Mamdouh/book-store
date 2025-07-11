@@ -33,8 +33,9 @@ export const loadOrdersFromDB = createAsyncThunk<
           book_count: item.book_count,
       }));
 
-    } catch (error:any) {
-      return rejectWithValue(error.message || 'UnExpected Error at loading orders from Supabase')
+    } catch (error:unknown) {
+        const errorMessage = error instanceof Error ? error.message : "UnExpected Error at loading orders from Supabase";
+        return rejectWithValue(errorMessage)
     }
     
   }

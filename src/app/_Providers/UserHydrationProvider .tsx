@@ -7,10 +7,11 @@ import { createClient } from '@/utils/supabase/client';
 import { loadWishListFromDB } from '@/store/thunks/WishListThunks/loadWishListFromDB';
 import { loadCartFromDB } from '@/store/thunks/CartThunks/loadCartFromDB';
 import { setUser, setUserId } from '@/lib/redux/UserSlice/UserSlice';
+import { AppDispatch } from '@/lib/redux/reduxStore';
 
 
 export default function UserHydrationProvider({ children }: { children: ReactNode }) {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,7 +19,6 @@ export default function UserHydrationProvider({ children }: { children: ReactNod
       const { data } = await supabase.auth.getUser();
       const user = data?.user
       const userId = data?.user?.id;
-      console.log('From Hydration:  '+userId);
 
       if (userId) {
         dispatch(setUser(user));

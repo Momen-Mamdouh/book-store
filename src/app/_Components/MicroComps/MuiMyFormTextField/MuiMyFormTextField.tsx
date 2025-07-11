@@ -4,24 +4,24 @@ import TextField from "@mui/material/TextField";
 import FormError from "@/app/_Components/Forms/FormError/FormError";
 import { FormikErrors, FormikTouched } from "formik";
 
-interface IFormTextField {
+interface IFormTextField<T> {
   id: string;
-  name: keyof any;
+  name: keyof T;
   label: string;
   type?: string;
   formik: {
-    values: any;
-    handleChange: (e: React.ChangeEvent<any>) => void;
-    touched: FormikTouched<any>;
-    errors: FormikErrors<any>;
+    values: T;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    touched: FormikTouched<T>;
+    errors: FormikErrors<T>;
   };
-  handleBlur: (e: React.FocusEvent<any>) => void;
-  dismissedErrors: Record<string, boolean>;
-  setDismissedErrors: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+  handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  dismissedErrors: Record<keyof T, boolean>;
+  setDismissedErrors: React.Dispatch<React.SetStateAction<Record<keyof T, boolean>>>;
   sx?: object;
 }
 
-export default function MuiMyFormTextField({
+export default function MuiMyFormTextField<T>({
   id,
   name,
   label,
@@ -31,9 +31,9 @@ export default function MuiMyFormTextField({
   dismissedErrors,
   setDismissedErrors,
   sx = { width: "75%", backgroundColor: "secondary.main" },
-}: IFormTextField) {
+}: IFormTextField<T>) {
   const fieldName = name as string;
-  const error = !!formik.errors[fieldName] && formik.touched[fieldName] && !dismissedErrors[fieldName];
+  const error = !!formik.errors[name] && formik.touched[name] && !dismissedErrors[name];
 
   return (
     <TextField
@@ -43,30 +43,29 @@ export default function MuiMyFormTextField({
       type={type}
       variant="filled"
       sx={sx}
-      value={formik.values[fieldName]}
+      value={formik.values[name]}
       onChange={formik.handleChange}
       onBlur={handleBlur}
       error={error}
       helperText={
         error && (
           <FormError
-            errorMessage={formik.errors[fieldName] as string}
+            errorMessage={formik.errors[name] as string}
             onClose={() =>
               setDismissedErrors((prev) => ({
                 ...prev,
-                [fieldName]: true,
+                [name]: true,
               }))
             }
           />
         )
       }
       InputProps={{
-        style: { fontSize: "1.25rem" }, // ✅ input text size
+        style: { fontSize: "1.25rem" },
       }}
       InputLabelProps={{
-        style: { fontSize: "1.25rem" }, // ✅ label text size
+        style: { fontSize: "1.25rem" },
       }}
     />
   );
 }
-

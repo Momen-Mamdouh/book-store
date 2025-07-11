@@ -38,7 +38,7 @@ export default function SlideContent({ book, isActive }: { book: IBook, isActive
                 <img className='h-full w-full object-contain drop-shadow-xl rounded-xl' src={bgImage} alt="book thumbnail"  />
             </div>
 
-             <div className={`mainBookInfo  ${ animate ?styles.slideInRight: ''} bg-slate-200/75 w-[175%] rounded-xl flex flex-col justify-center items-center p-5  col-start-8 col-span-7 `}>
+             <div className={`mainBookInfo  ${ animate ?styles.slideInRight: ''} bg-slate-200/75 w-[200%] rounded-xl flex flex-col justify-center items-center p-5  col-start-8 col-span-7 `}>
                 <div className="bookInfo">
                     <h3 className="text-[1rem] md:text-[2rem] font-semibold">{book.volumeInfo?.title}</h3>
                     <p className="text-lg md:text-xl self-end mb-5">Authors: {authors}</p>

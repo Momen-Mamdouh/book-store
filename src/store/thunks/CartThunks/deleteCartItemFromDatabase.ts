@@ -38,9 +38,9 @@
           toast.success(`Item deleted for user ${userData?.user?.identities?.[0]?.identity_data?.username} 👌`);
           
         return book_id || 'Not defined Book_id';
-      } catch (error:any) {
+      } catch (error:unknown) {
+          const errorMessage = error instanceof Error ? error.message : "Failed cto connect to cart table";
           toast.dismiss(toastId);
-          const errorMessage = error.message || 'Failed to connect to cart Table'
           toast.error(errorMessage);
           return rejectWithValue(errorMessage)
 

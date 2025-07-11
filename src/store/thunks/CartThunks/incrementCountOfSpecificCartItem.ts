@@ -20,7 +20,7 @@ import { IBookOrders } from '@/app/_Interfaces/IAddedBookData';
         const existingItem = cartItems.find(item => item.book_id === cartItem.book_id);
 
         if (existingItem) {
-            const currentCount = existingItem?.bookOrder.book_count! ?? 0;
+            const currentCount = existingItem?.bookOrder.book_count ?? 0;
 
             const { data, error:incrementItemError } = await supabase
             .from("cart_items")
@@ -79,8 +79,8 @@ import { IBookOrders } from '@/app/_Interfaces/IAddedBookData';
                     };
         }
 
-        } catch (error:any) {
-          const errorMessage = error.message || "Failed to conect the cart";
+        } catch (error:unknown) {
+          const errorMessage = error instanceof Error ? error.message : "Failed cto connect to cart table";
           toast.dismiss(toastId);
           toast.error(errorMessage);
           return rejectWithValue(errorMessage);

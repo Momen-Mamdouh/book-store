@@ -37,11 +37,11 @@ export const deleteOrderItemFromDatabase = createAsyncThunk<
       toast.success(`Item deleted for user ${userData?.user?.user_metadata?.username ?? 'unknown'} 👌`);
       return book_id || 'No Defined Book'; 
 
-    } catch (err: any) {
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "Unexpected error during deleting";
         toast.dismiss(toastId);
-        const message = err?.message || "Unexpected error during deletion";
-        toast.error(message);
-        return rejectWithValue(message); 
+        toast.error(errorMessage);
+        return rejectWithValue(errorMessage); 
     }
     finally {
       toast.dismiss(toastId);

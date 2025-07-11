@@ -34,7 +34,7 @@ export default function Profile() {
     
     const userData:IUserProfileData = {
         name:  user?.user_metadata?.username  ?? 'Guest',
-        email: user?.email! ?? 'No Email',
+        email: user?.email ?? 'No Email',
         phone: user?.user_metadata?.phone ? user?.user_metadata?.phone : 'Not Provided',
         avatarUrl: user?.user_metadata?.avatar_url ?? '',
         mainAddress: user?.user_metadata?.address ? user?.user_metadata?.address : 'Not Provided',

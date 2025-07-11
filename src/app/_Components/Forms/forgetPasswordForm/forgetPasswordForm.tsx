@@ -18,6 +18,10 @@ import ResponseDialog from '@/app/_Components/Loaders/responseDialog/responseDia
 import { IForgetPassword } from '@/app/_Interfaces/IForms';
 
 
+type MyFormValues = {
+    email: string;
+};
+
 export default function ForgetPasswordForm(){
 
     const supabase = createClient();
@@ -55,7 +59,6 @@ export default function ForgetPasswordForm(){
                         buttonText: "Try Again",
                         route: "forget-password"
                     });
-                    return;
                 }
 
 
@@ -97,14 +100,14 @@ export default function ForgetPasswordForm(){
                     rowGap:'1rem'
                     }}>
      
-            <MuiMyFormTextField
+            <MuiMyFormTextField<MyFormValues>
                                 id="email"
                                 name="email"
                                 label="Email"
                                 formik={forgetPasswordFormikObj}
                                 handleBlur={handleBlur}
-                                dismissedErrors={dismissedErrors}
-                                setDismissedErrors={setDismissedErrors}
+                                dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                                setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                             />
                     
              

@@ -12,7 +12,7 @@ export interface IBookDetails {
 export interface IBookTab{
   tabLabel:string,
   tabValue:number,
-  tabData:any,
+  tabData: string | IBookTabInfo,
 }
 
 export interface IBookTabInfo{

@@ -62,11 +62,11 @@ export default function CheckOutBtn(props: IMainBtn): ReactElement {
       }
       
       
-    } catch (error:any) {
+    } catch (error:unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to start checkout';
       toast.dismiss(toastId);
-      const fetchingError = error.message || 'Failed to start checkout';
-      toast.error(fetchingError);
-      throw error
+      toast.error(errorMessage);
+      throw errorMessage
     }
   };
 

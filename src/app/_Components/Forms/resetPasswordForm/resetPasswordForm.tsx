@@ -57,7 +57,6 @@ export default function ResetPasswordForm(){
                         buttonText: "Try Again",
                         route: "reset-password"
                     });
-                    return;
                 }
 
                 const userId = session.user.id;
@@ -72,10 +71,9 @@ export default function ResetPasswordForm(){
                         buttonText: "Try Again",
                         route: "reset-password"
                     });
-                return;
                 }
 
-                const { success, error: errorDB } = await syncAuthUserToDb(userId, { updated_at: new Date() });
+                const { success, error: errorDB } = await syncAuthUserToDb(userId, { created_at: new Date() });
                 if (!success) {
                      showDialog({
                         title: `${errorDB?.name}`,

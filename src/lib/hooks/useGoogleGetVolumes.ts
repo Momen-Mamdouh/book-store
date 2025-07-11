@@ -9,7 +9,7 @@ export function useGoogleGetVolumes(searchTerm: string, maxResults: number = 10)
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [totalItems, setTotalItems] = useState<number>(0); 
-  const [books, setBooks] = useState<any[]>([]);
+  const [books, setBooks] = useState<[]>([]);
    
   const {homeCurrentPagination:startIndex} = useSelector((state:RootState)=> state.bookStore);
 

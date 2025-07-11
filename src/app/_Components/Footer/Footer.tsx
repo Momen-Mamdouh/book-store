@@ -22,7 +22,7 @@ interface IFooterIcons{
 export default function Footer() {
 
   const footerLinks:IFooterLinks[] = [
-      {linkName:'About', linkHref:'/about'},
+      {linkName:'Shop', linkHref:'/shop'},
       {linkName:'Categories', linkHref:'/categories'},
       {linkName:'ContactUs', linkHref:'/contact-us'},
       {linkName:'Terms', linkHref:'/terms'},

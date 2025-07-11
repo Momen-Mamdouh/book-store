@@ -67,8 +67,8 @@ export const addWishListItemToDatabase = createAsyncThunk<
                 };
       }
 
-      } catch (error:any) {
-          const errorMessage = error.message || "Failed to add item to wishlist"
+      } catch (error:unknown) {
+          const errorMessage = error instanceof Error ? error.message : "Failed to add item to wishlist";
           toast.dismiss(toastId);
           toast.error(errorMessage);
           return rejectWithValue(errorMessage);

@@ -20,6 +20,11 @@ import { Stack } from '@mui/material';
 import dynamic from 'next/dynamic';
 import BooksResponseLoader from '@/app/_Components/Loaders/BooksResponseLoader/BooksResponseLoader';
 
+type MyFormValues = {
+    full_name: string;
+    subject: string;
+    message: string;
+};
 
 const MapComp = dynamic(() => import('@/app/_Components/MapComp/MapComp'), {
   ssr: false,
@@ -139,35 +144,35 @@ export default function ContactUsForm(){
                         }}>
         
 
-                <MuiMyFormTextField
+                <MuiMyFormTextField<MyFormValues>
                         id="full_name"
                         name="full_name"
                         label="Full Name"
                         formik={contactUsFormikObj}
                         handleBlur={handleBlur}
-                        dismissedErrors={dismissedErrors}
-                        setDismissedErrors={setDismissedErrors}
+                        dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                        setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                     />
 
-                    <MuiMyFormTextField
+                    <MuiMyFormTextField<MyFormValues>
                         id="subject"
                         name="subject"
                         label="Subject"
                         formik={contactUsFormikObj}
                         handleBlur={handleBlur}
-                        dismissedErrors={dismissedErrors}
-                        setDismissedErrors={setDismissedErrors}
+                        dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                        setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                         
                     />
 
-                    <MuiMyFormTextField
+                    <MuiMyFormTextField<MyFormValues>
                         id="message"
                         name="message"
                         label="Message"
                         formik={contactUsFormikObj}
                         handleBlur={handleBlur}
-                        dismissedErrors={dismissedErrors}
-                        setDismissedErrors={setDismissedErrors}
+                        dismissedErrors={dismissedErrors as Record<keyof MyFormValues, boolean>}
+                        setDismissedErrors={setDismissedErrors  as React.Dispatch<React.SetStateAction<Record<keyof MyFormValues, boolean>>>}
                     />
 
         

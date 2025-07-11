@@ -10,6 +10,8 @@ import SlideContent from '@/app/_Components/Sliders/HomeSliderContent/HomeSlider
 import SwiperNavigationBtn from '@/app/_Components/MicroComps/SwiperNavigationBtn/SwiperNavigationBtn'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import { Swiper as SwiperType } from 'swiper/types'
+
 
 
 
@@ -17,7 +19,7 @@ import 'swiper/css/navigation'
 export default function SliderLogic ({books}:{books:IBook[]}){
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperType | null>(null);
 
        return (
 

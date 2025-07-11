@@ -42,8 +42,8 @@ export const deleteWhishListFromDatabase = createAsyncThunk<
         toast.success(`Item deleted from wishList for user ${userData?.user?.identities?.[0]?.identity_data?.username} 👌`);
         
       return book_id || 'Not defined Book_id';
-    } catch (error:any) {
-        const errorMessage = error.message || "Failed to delete item from whishList"
+    } catch (error:unknown) {
+        const errorMessage = error instanceof Error ? error.message : "Failed to delete item from  wishlist";
         toast.dismiss(toastId);
         toast.error(errorMessage);
         return rejectWithValue(errorMessage);

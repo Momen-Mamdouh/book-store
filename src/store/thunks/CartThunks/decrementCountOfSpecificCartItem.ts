@@ -92,8 +92,8 @@ import { IBookOrders } from "@/app/_Interfaces/IAddedBookData";
         toast.dismiss(toastId);
         toast.error("Item not found in Cart Table");
         return rejectWithValue("Not Found Item in Cart");
-    } catch (error:any) {
-      const errorMessage = error.message || "Failed to conect the cart";
+    } catch (error:unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed cto connect to cart";
       toast.dismiss(toastId);
       toast.error(errorMessage);
       return rejectWithValue(errorMessage);

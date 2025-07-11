@@ -88,8 +88,8 @@ import toast from 'react-hot-toast';
                   }
                 };
       }
-      } catch (error:any) {
-          const errorMessage = error.message || "Failed cto connect to cart table";
+      } catch (error:unknown) {
+          const errorMessage = error instanceof Error ? error.message : "Failed cto connect to cart table";
           toast.dismiss(toastId);
           toast.error(errorMessage);
           return rejectWithValue(errorMessage);

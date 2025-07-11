@@ -1,8 +1,9 @@
 import {  Stack } from "@mui/material";
 import TitleAndDataComp from "@/app/_Components/MicroComps/TitleAndDataComp/TitleAndDataComp";
 import BookInfoBtn from "@/app/_Components/Buttons/BookInfoBtn/BookInfoBtn";
+import { IBookTabInfo } from "@/app/_Interfaces/IBookDetails";
 
-export default function BookInfoTab({bookData}:{bookData:any}){
+export default function BookInfoTab({bookData}:{bookData:IBookTabInfo}){
 
     const tabInfoEntries = [
         { label: "Maturity", value: bookData.booKMaturityRating },

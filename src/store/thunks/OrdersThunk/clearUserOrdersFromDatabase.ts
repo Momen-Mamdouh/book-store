@@ -33,11 +33,11 @@ export const clearUserOrdersFromDatabase = createAsyncThunk<string, string, {rej
         toast.success(`Orders cleared for user ${userData?.user?.identities?.[0]?.identity_data?.username} 👌`);
 
       return userId;
-    } catch (err:any) {
+    } catch (error:unknown) {
+        const errorMessage = error instanceof Error ? error.message : "Unexpected error during clearing";
         toast.dismiss(toastId);
-        const message = err?.message || "Unexpected error during clearing";
-        toast.error(message);
-        return rejectWithValue(message); 
+        toast.error(errorMessage);
+        return rejectWithValue(errorMessage); 
       }
   }
 );
