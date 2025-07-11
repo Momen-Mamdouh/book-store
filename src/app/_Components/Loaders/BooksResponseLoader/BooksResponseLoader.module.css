@@ -1,0 +1,260 @@
+/* From Uiverse.io by nima-mollazadeh - Converted to CSS Modules */
+.loader {
+  --dur: 2s;
+  display: block;
+  margin: auto;
+  width: 14em;
+  height: auto;
+}
+
+.glareTop,
+.glareBottom,
+.model,
+.motionThick,
+.motionMedium,
+.motionThin,
+.sandDrop,
+.sandFill,
+.sandGrainLeft,
+.sandGrainRight,
+.sandLineLeft,
+.sandLineRight,
+.sandMoundTop,
+.sandMoundBottom {
+  animation-duration: var(--dur);
+  animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  animation-iteration-count: infinite;
+}
+
+.glareTop {
+  animation-name: GlareTop;
+}
+
+.glareBottom {
+  animation-name: GlareBottom;
+}
+
+.model {
+  animation-name: LoaderFlip;
+  transform-origin: 12.25px 16.75px;
+}
+
+.motionThick,
+.motionMedium,
+.motionThin {
+  transform-origin: 26px 26px;
+}
+
+.motionThick {
+  animation-name: MotionThick;
+}
+
+.motionMedium {
+  animation-name: MotionMedium;
+}
+
+.motionThin {
+  animation-name: MotionThin;
+}
+
+.sandDrop {
+  animation-name: SandDrop;
+}
+
+.sandFill {
+  animation-name: SandFill;
+}
+
+.sandGrainLeft {
+  animation-name: SandGrainLeft;
+}
+
+.sandGrainRight {
+  animation-name: SandGrainRight;
+}
+
+.sandLineLeft {
+  animation-name: SandLineLeft;
+}
+
+.sandLineRight {
+  animation-name: SandLineRight;
+}
+
+.sandMoundTop {
+  animation-name: SandMoundTop;
+}
+
+.sandMoundBottom {
+  animation-name: SandMoundBottom;
+  transform-origin: 12.25px 31.5px;
+}
+
+/* Dark theme - modified for CSS Modules */
+@media (prefers-color-scheme: dark) {
+  .loader {
+    /* Define dark theme variables within the loader scope */
+    --bg: hsl(var(--hue), 90%, 10%);
+    --fg: hsl(var(--hue), 90%, 90%);
+  }
+}
+
+/* Animation keyframes */
+@keyframes LoaderFlip {
+  from { transform: translate(13.75px, 9.25px) rotate(-180deg); }
+  24%, to { transform: translate(13.75px, 9.25px) rotate(0); }
+}
+
+@keyframes GlareTop {
+  from { stroke: rgba(255, 255, 255, 0); }
+  24%, to { stroke: white; }
+}
+
+@keyframes GlareBottom {
+  from { stroke: white; }
+  24%, to { stroke: rgba(255, 255, 255, 0); }
+}
+
+@keyframes MotionThick {
+  from {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(0.67turn);
+  }
+  20% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+    stroke: rgb(32, 32, 32);
+    stroke-dashoffset: 141.11;
+    transform: rotate(1turn);
+  }
+  40%, to {
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(1.33turn);
+  }
+}
+
+@keyframes MotionMedium {
+  from, 8% {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(0.5turn);
+  }
+  20% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+    stroke: white;
+    stroke-dashoffset: 147.53;
+    transform: rotate(0.83turn);
+  }
+  32%, to {
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(1.17turn);
+  }
+}
+
+@keyframes MotionThin {
+  from, 4% {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(0.33turn);
+  }
+  24% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+    stroke: rgb(53, 53, 53);
+    stroke-dashoffset: 134.7;
+    transform: rotate(0.67turn);
+  }
+  44%, to {
+    stroke: rgba(255, 255, 255, 0);
+    stroke-dashoffset: 153.94;
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes SandDrop {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 1;
+  }
+  70%, to {
+    stroke-dashoffset: -107;
+  }
+}
+
+@keyframes SandFill {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 55;
+  }
+  70%, to {
+    stroke-dashoffset: -54;
+  }
+}
+
+@keyframes SandGrainLeft {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 29;
+  }
+  70%, to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@keyframes SandGrainRight {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 27;
+  }
+  70%, to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes SandLineLeft {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 53;
+  }
+  70%, to {
+    stroke-dashoffset: -55;
+  }
+}
+
+@keyframes SandLineRight {
+  from, 10% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    stroke-dashoffset: 14;
+  }
+  70%, to {
+    stroke-dashoffset: -24.5;
+  }
+}
+
+@keyframes SandMoundTop {
+  from, 10% {
+    animation-timing-function: linear;
+    transform: translate(0, 0);
+  }
+  15% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    transform: translate(0, 1.5px);
+  }
+  51%, to {
+    transform: translate(0, 13px);
+  }
+}
+
+@keyframes SandMoundBottom {
+  from, 31% {
+    animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+    transform: scale(1, 0);
+  }
+  56%, to {
+    transform: scale(1, 1);
+  }
+}

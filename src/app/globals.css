@@ -1,0 +1,122 @@
+
+@import "tailwindcss";
+
+@utility container {
+ margin-inline: auto;
+  padding-inline: 1rem;
+
+  max-width: 100%;
+
+  @variant sm {
+    max-width: 640px;
+    padding-inline: 1.5rem;
+  }
+
+  @variant md {
+    max-width: 768px;
+    padding-inline: 2rem;
+  }
+
+  @variant lg {
+    max-width: 1024px;
+    padding-inline: 3rem;
+  }
+
+  @variant xl {
+    max-width: 1280px;
+    padding-inline: 4rem;
+  }
+
+  @variant 2xl {
+    max-width: 1536px;
+    padding-inline: 5rem;
+  } 
+}
+
+:root {
+  --backgroundColor: #FFF8E8;
+  --foreground: #171717;
+  --secondaryColor: #F8EEDF;
+  --primaryColor: #BFBBA9;
+
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--foreground);
+}
+
+
+/* !!=======================FONTS======================= */
+.font-quintessential{
+  font-family: var(--font-quintessential), cursive;
+  font-size: '2rem';
+}
+
+.main_fontSize{
+  @apply text-lg
+}
+/* !!=======================FONTS======================= */
+
+
+
+/* ??=======================Backgrounds======================= */
+.points-background, .diagonal-background{
+  opacity: 0.8;
+}
+.points-background{
+  background-image:  radial-gradient(#dfd6c6 0.5px, transparent 0.5px), radial-gradient(#e5d3b3 1px, #f7f3e6 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
+}
+.diagonal-background{
+  background-size: 10px 10px;
+  background-image: repeating-linear-gradient(45deg, #dfd6c6 0, #e5d3b3 1px, #f7f3e6 0, #f7f3e6 50%);
+}
+/* ??=======================Backgrounds======================= */
+
+/* ^^=======================Sections_Classes======================= */
+
+.sectionClasses{
+  @apply container mb-28 pb-3
+}
+.heading-padding{
+  @apply py-16
+}
+
+.main-border-top{
+  @apply border-t-2 border-gray-300/25
+}
+.main-border-bottom{
+  @apply border-b-2 border-gray-300/25
+}
+/* ^^=======================Sections_Classes======================= */
+
+
+/* ??=======================Main_Colors======================= */
+.main{
+  color: #000000;
+}
+.main-primary-color{
+  @apply bg-[#ADA991]
+}
+.main-secondary-color{
+  @apply bg-[#FFF8E8]
+}
+
+.secondary-hover-color{
+  @apply text-[#3D0301]
+}
+
+.btn-main-hover{
+  @apply hover:bg-stone-800 duration-300 
+}
+
+
+/* ??=======================Main_Colors======================= */
+
+
+
+
+
+

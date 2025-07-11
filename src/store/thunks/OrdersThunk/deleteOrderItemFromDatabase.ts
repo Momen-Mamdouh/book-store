@@ -1,0 +1,50 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createClient } from "@/utils/supabase/client";
+
+import { IUserMainpulateData } from "@/app/_Interfaces/IUserData";
+import toast from "react-hot-toast";
+
+export const deleteOrderItemFromDatabase = createAsyncThunk<
+  string, //^^ return type when fulfilled
+  IUserMainpulateData, //^^  args
+  { rejectValue: string } //^^ rejected value type
+>(
+  'orders/deleteOrderItemFromDatabase',
+  async ({ user_id, book_id }, { rejectWithValue }) => {
+      const toastId = toast.loading('Deleting Item...');
+    try {
+      
+      const supabase = createClient();
+      const { data: userData, error:userError } = await supabase.auth.getUser();
+       if (userError) {
+          toast.error(userError.message);
+          return rejectWithValue(userError.message); 
+      }
+
+      const { error:orderItemsError } = await supabase
+        .from("order_items")
+        .delete()
+        .eq('book_id', book_id)
+        .eq('user_id', user_id);
+
+      if (orderItemsError) {
+        toast.dismiss(toastId);
+        toast.error(orderItemsError.message);
+        return rejectWithValue(orderItemsError.message); 
+      }
+
+      toast.dismiss(toastId);
+      toast.success(`Item deleted for user ${userData?.user?.user_metadata?.username ?? 'unknown'} 👌`);
+      return book_id || 'No Defined Book'; 
+
+    } catch (err: any) {
+        toast.dismiss(toastId);
+        const message = err?.message || "Unexpected error during deletion";
+        toast.error(message);
+        return rejectWithValue(message); 
+    }
+    finally {
+      toast.dismiss(toastId);
+    }
+  }
+);

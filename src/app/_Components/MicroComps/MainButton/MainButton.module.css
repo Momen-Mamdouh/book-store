@@ -1,0 +1,326 @@
+
+
+.btn, .btnYellow, .btnWishlist, .btnInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
+  width: 13rem;
+  overflow: hidden;
+  height: 3rem;
+  background-size: 300% 300%;
+  cursor: pointer;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+  transition: 0.5s;
+  animation: gradient_301 5s ease infinite;
+  border: double 4px transparent;
+  background-image: linear-gradient(#1a120b, #1a120b),
+    linear-gradient(
+      137.48deg,
+      #a47148 10%,
+      #c49b66 45%,
+      #7e5e3e 67%,
+      #3d2e1e 87%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.containerStars {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+}
+
+.title {
+  z-index: 2;
+  font-family: "Avalors Personal Use";
+  letter-spacing: 5px;
+  color: #fff8dc;
+  text-shadow: 0 0 4px #f5deb3;
+  word-wrap: break-word;       
+  overflow-wrap: break-word; 
+}
+
+.glow {
+  position: absolute;
+  display: flex;
+  width: 12rem;
+}
+
+.circle {
+  width: 100%;
+  height: 30px;
+  filter: blur(2rem);
+  animation: pulse_3011 4s infinite;
+  z-index: -1;
+}
+
+.circle:nth-of-type(1) {
+  background: rgba(196, 155, 102, 0.6); /* bronze glow */
+}
+
+.circle:nth-of-type(2) {
+  background: rgba(126, 94, 62, 0.7); /* dark wood glow */
+}
+
+.btn:hover .containerStars{
+  z-index: 1;
+  background-color: #1a120b;
+}
+
+.btn:hover, .btnYellow:hover, .btnWishlist:hover, .btnInfo:hover {
+  transform: scale(1.1);
+}
+
+.btn:active, .btnYellow:active, .btnInfo:active {
+  border: double 4px #c49b66;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+}
+
+.btn:active .circle {
+  background: #c49b66;
+}
+
+.stars {
+  position: relative;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+.stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: animStarRotate 90s linear infinite;
+  background-image: radial-gradient(#f5deb3 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: animStar 60s linear infinite;
+  background-image: radial-gradient(#f5deb3 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+/* !!!===============================DISABLED============================== */
+.btn {
+  background-image: linear-gradient(#1a120b, #1a120b),
+    linear-gradient(
+      137.48deg,
+      #a47148 10%,
+      #c49b66 45%,
+      #7e5e3e 67%,
+      #3d2e1e 87%
+    );
+}
+
+.btn:disabled, .btnYellow:disabled, .btnWishlist:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  background-image: linear-gradient(#3b0b0b, #3b0b0b),
+    linear-gradient(
+      137.48deg,
+      #ff6b6b 10%,    /* light red */
+      #e63946 45%,    /* coral red */
+      #b22222 67%,    /* firebrick */
+      #7a1f1f 87%     /* dark crimson */
+    );
+}
+
+.btn:disabled .containerStars, .btnYellow:disabled .containerStars, 
+.btnWishlist:disabled .containerStars, .btnInfo:disabled .containerStars {
+  background-color: #3b0b0b;
+}
+
+.btn:disabled .circle:nth-of-type(1), .btnYellow:disabled .circle:nth-of-type(1),  
+.btnWishlist:disabled .circle:nth-of-type(1), .btnInfo:disabled .circle:nth-of-type(1)  {
+  background: rgba(255, 107, 107, 0.6); /* soft red glow */
+}
+
+.btn:disabled .circle:nth-of-type(2), .btnYellow:disabled .circle:nth-of-type(2),  
+.btnWishlist:disabled .circle:nth-of-type(2), .btnInfo:disabled .circle:nth-of-type(2)  {
+  background: rgba(178, 34, 34, 0.7); /* firebrick glow */
+}
+
+.btn:disabled .stars::after,
+.btn:disabled .stars::before,
+.btnYellow:disabled .stars::after,
+.btnYellow:disabled .stars::before,
+.btnWishlist:disabled .stars::after,
+.btnWishlist:disabled .stars::before,
+.btnInfo:disabled .stars::after,
+.btnInfo:disabled .stars::before {
+  background-image: radial-gradient(#ffb3b3 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+/* !!!===============================DISABLED============================== */
+
+/* ^^^===============================BTN_Yellow============================== */
+
+.btnYellow {
+  background-image: linear-gradient(#7a5f00, #7a5f00),
+    linear-gradient(
+      137.48deg,
+      #f7d774 10%,   /* light gold */
+      #f1c40f 45%,   /* golden yellow */
+      #e0ac00 67%,   /* deep gold */
+      #b68600 87%    /* mustard */
+    );
+}
+
+.btnYellow:hover .containerStars {
+  background-color: #7a5f00;
+}
+
+.btnYellow:active {
+  border: double 4px #f1c40f;
+}
+
+.btnYellow:active .circle {
+  background: #f1c40f;
+}
+/* ^^^===============================BTN_Yellow============================== */
+
+/* !!!===============================BTN_Red============================== */
+
+.btnWishlist {
+  background-image: linear-gradient(#3b0b0b, #3b0b0b),
+    linear-gradient(
+      137.48deg,
+      #ffc1cc 10%,     /* light pink */
+      #ff7f7f 45%,     /* soft rose red */
+      #ff4d6d 67%,     /* deep rose */
+      #d6336c 87%      /* raspberry red */
+    );
+}
+
+.btnWishlist:hover .containerStars {
+  background-color: #3b0b0b;
+}
+
+.btnWishlist:active {
+  border: double 4px #ff4d6d;
+}
+
+.btnWishlist:active .circle {
+  background: #ff4d6d;
+}
+
+.btnWishlist .circle:nth-of-type(1) {
+  background: rgba(255, 193, 204, 0.6); /* light pink glow */
+}
+
+.btnWishlist .circle:nth-of-type(2) {
+  background: rgba(214, 51, 108, 0.7); /* raspberry glow */
+}
+/* !!!===============================BTN_Red============================== */
+
+
+/* **===============================BTN_GREEN============================== */
+.btnInfo {
+  background-image: linear-gradient(#0a2a2a, #0a2a2a),
+    linear-gradient(
+      137.48deg,
+      #b2fefa 10%,     /* light aqua */
+      #0ed2f7 45%,     /* sky blue */
+      #05a081 67%,     /* teal green */
+      #00796b 87%      /* deep turquoise */
+    );
+}
+
+.btnInfo:hover .containerStars {
+  background-color: #0a2a2a; /* dark teal on hover */
+}
+
+.btnInfo:active {
+  border: double 4px #05a081; /* teal border on active */
+}
+
+.btnInfo:active .circle {
+  background: #05a081; /* same teal as border */
+}
+
+.btnInfo .circle:nth-of-type(1) {
+  background: rgba(178, 254, 250, 0.6); /* light aqua glow */
+}
+
+.btnInfo .circle:nth-of-type(2) {
+  background: rgba(0, 121, 107, 0.7); /* deep turquoise glow */
+}
+
+/* **===============================BTN_GREEN============================== */
+
+
+
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse_3011 {
+  0% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+

@@ -1,0 +1,38 @@
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideInRight {
+    0% { transform: translateX(100%); opacity: 0;  visibility: hidden;}
+    10% {visibility: hidden;}
+    100% { transform: translateX(-25%); opacity: 1; visibility: visible;}
+  }
+
+  @keyframes book_imgSlideInRight {
+    0% { transform: translateX(300%); opacity: 0; visibility: visible; }
+    1% {visibility: visible;}
+    100% { transform: translateX(-100%); opacity: 1; visibility: visible; }
+  }
+
+ 
+
+  .fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .slideInRight {
+    animation: slideInRight 0.8s ease-out 0.4s forwards;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .book_imgSlideInRight {
+    animation: book_imgSlideInRight 1s ease-out 0.8s forwards;
+    transform: translateX(300%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
