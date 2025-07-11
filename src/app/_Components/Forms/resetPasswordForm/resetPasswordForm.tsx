@@ -59,7 +59,7 @@ export default function ResetPasswordForm(){
                     });
                 }
 
-                const userId = session.user.id;
+                const userId = session?.user.id ?? '';
                 const { error } = await supabase.auth.updateUser({
                         password,
                     });
